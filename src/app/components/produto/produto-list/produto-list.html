@@ -1,0 +1,26 @@
+<table class="table">
+<thead>
+    <tr>
+        <th>Id</th>
+        <th>Nome</th>
+        <th>Preço</th>
+        <th>Estoque</th>
+        
+    </tr>
+</thead>
+<tbody>
+    @for(produto of lista; track $index){
+     <tr>
+        <td>{{produto.id}}</td>
+        <td>{{produto.name}}</td>
+        <td>{{produto.preco}}</td>
+        <td>{{produto.estoque}}</td>
+        <td><button type="button" class="btn btn-danger" mdbRipple (click)="delete(produto)">Deletar</button></td>
+        <td><button type="button" class="btn btn-primary" mdbRipple (click)="delete(produto)">Atualizar</button></td>
+
+     </tr>
+     
+    }
+   
+</tbody>
+</table>
