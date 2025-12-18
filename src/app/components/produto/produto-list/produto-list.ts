@@ -4,6 +4,9 @@ import { Produto } from '../../../models/produto';
 import { ProdutoService } from '../../../services/produto-service';
 import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
 import { Router } from '@angular/router';
+
+import { ProdutoComponent } from '../produto-component/produto-component';
+import { routes } from '../../../app.routes';
 @Component({
   selector: 'app-produto-list',
   imports: [],
@@ -13,7 +16,9 @@ import { Router } from '@angular/router';
 export class ProdutoList {
   //pra conseguri invcar o service
   produtoService = inject(ProdutoService);
+  rota = inject(Router);
   lista: Produto[] =[];
+  produtoEdit: Produto = new Produto(0,"",0,0); // objeto que vai carregar no
   findAll(){
     this.produtoService.findAll().subscribe({
       next: lista => {
@@ -43,6 +48,12 @@ delete(p: Produto){
     }
   )
 }
+
+edit(id:number){
+  this.rota.navigate(['admin/produtos/edit', id]);
+
+}
+
 
 
 

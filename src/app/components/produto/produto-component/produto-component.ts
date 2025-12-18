@@ -18,6 +18,18 @@ export class ProdutoComponent {
   router = inject(ActivatedRoute);
   router2 = inject(Router);
   produtoService = inject(ProdutoService);
+  //podemops fazer o cadastro por rota, preencha as informações. tem q pegar o id
+  //da rota usar findByid do back, preencher com o produto encontrado e preencher
+  //inicializa o potencial id de algo que vou atualizar.
+  constructor(){
+    let id = this.router.snapshot.params['id'];//pega a variavel id
+    if (id > 0){//se for maior que 0, e ubsuco o objeto no back e coloco no objeto Produto que vou editar lá em cima (input)
+      this.findById(id);
+    }
+
+
+
+  }
   save(){
       if(this.produto.id > 0){
         this.produtoService.update(this.produto).subscribe({
@@ -35,13 +47,23 @@ export class ProdutoComponent {
         this.retorno.emit(mensagem); 
       this.router2.navigate(['admin/produtos']); // opcional
       }, error: erro => {
-        alert("erro")
+        alert("erro ao salvar")
       }
     })
       }
 
 
    
+  }
+  findById(id: number){
+    //busca no back end
+    this.produtoService.findById(id).subscribe({
+      next: retorno =>{
+        this.produto = retorno; //o carro do input lá
+      }, error: erro => {
+        alert("erro na busca pelo ID")
+      }
+    })
   }
   
 

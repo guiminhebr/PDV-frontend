@@ -20,7 +20,7 @@ export class ProdutoService {
     return this.http.post<String>(this.API+"/save", produto, {responseType:'text' as 'json'});
   }
   update(produto: Produto): Observable<String>{
-    return this.http.put<String>(this.API+"/update"+produto.id, produto, {responseType: 'text' as 'json'});
+    return this.http.put<String>(this.API+"/update/"+produto.id, produto, {responseType: 'text' as 'json'});
   }
   findById(id: number): Observable<Produto>{
     return this.http.get<Produto>(this.API+"/findById/"+id);
