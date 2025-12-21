@@ -1,0 +1,28 @@
+
+<button type="button" class="btn btn-primary" mdbRipple>Cadastrar nova Venda</button>
+
+
+<table class="table">
+<thead>
+    <tr>
+        <th>Id</th>
+        <th>Data da Venda</th>
+        <th>Status da Venda</th>
+        <th>Valor Total da Venda</th>
+        
+    </tr>
+</thead>
+<tbody>
+    @for (venda of lista; track $index) {
+     <tr>
+        <td>{{venda.id}}</td>
+        <td>{{venda.dataHora}}</td>
+        <td>{{venda.status}}</td>
+        <td>{{venda.total}}</td>
+
+     </tr>
+    }
+    
+   
+</tbody>
+</table>

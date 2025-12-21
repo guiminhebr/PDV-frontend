@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ProdutoService {
   http = inject(HttpClient);
-  API = "http://localhost:8080/api"
+  API = "http://localhost:8080/produto"
 
   findAll(): Observable<Produto[]>{
     return this.http.get<Produto[]>(this.API+"/findAll");

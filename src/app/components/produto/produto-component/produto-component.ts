@@ -21,6 +21,11 @@ export class ProdutoComponent {
   //podemops fazer o cadastro por rota, preencha as informações. tem q pegar o id
   //da rota usar findByid do back, preencher com o produto encontrado e preencher
   //inicializa o potencial id de algo que vou atualizar.
+  isProdutoValido(): boolean{
+    return this.produto.preco >= 0 && this.produto.estoque >=0;
+  }
+
+
   constructor(){
     let id = this.router.snapshot.params['id'];//pega a variavel id
     if (id > 0){//se for maior que 0, e ubsuco o objeto no back e coloco no objeto Produto que vou editar lá em cima (input)
@@ -38,7 +43,7 @@ export class ProdutoComponent {
               this.retorno.emit(mensagem);
               this.router2.navigate(['admin/produtos']);
           }, error: erro => {
-                alert("erro ao atualizar");
+                alert("Erro ao atualizar");
           }
         })
       }else {
@@ -47,7 +52,7 @@ export class ProdutoComponent {
         this.retorno.emit(mensagem); 
       this.router2.navigate(['admin/produtos']); // opcional
       }, error: erro => {
-        alert("erro ao salvar")
+        alert("Erro ao salvar")
       }
     })
       }
